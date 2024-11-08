@@ -22,7 +22,7 @@ export class ItinerarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerOrigen();
-    this.obtenerDestinoPorOrigen();
+    this.obtenerDestino();
   }
 
   obtenerOrigen(): void {
@@ -32,16 +32,12 @@ export class ItinerarioComponent implements OnInit {
     );
   }
 
-  obtenerDestinoPorOrigen(): void {
-    if (this.origenSeleccionado) {
-        this.entrafesaService.getDestinosPorOrigen(this.origenSeleccionado).subscribe(
-            (data) => this.destino = data,
-            (error) => console.error('Error al obtener destinos: ', error)
-        );
-    } else {
-        this.destino = []; // Reiniciar si no hay origen seleccionado
-    }
-}
+  obtenerDestino(): void {
+    this.entrafesaService.getDestino().subscribe(
+      (data) => this.destino = data,
+      (error) => console.error('Error al obtener destinos: ', error)
+    );
+  }
 
   buscarItinerarios(): void {
     const fechaFormateada = new Date(this.fechaViajeISO).toISOString().split('T')[0];

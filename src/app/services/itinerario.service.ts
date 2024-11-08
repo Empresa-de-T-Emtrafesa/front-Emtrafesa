@@ -21,10 +21,8 @@ export class EntrafesaService {
     return this.http.get<string[]>(`${this.url1}/origenes`);
   }
 
-  // Nuevo método para obtener destinos filtrados por origen
-  getDestinosPorOrigen(origen: string): Observable<string[]> {
-    return this.http.get<string[]>(`${this.url1}/destinos/${origen}`);
+  getDestino(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.url1}/destinos`);
+  }
 }
-}
-
 
